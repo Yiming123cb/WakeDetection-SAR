@@ -29,7 +29,7 @@ if lines is not None:
         rho, theta = lines[i][0]
         theta_deg = np.degrees(theta)
 
-        # 🎯 Only keep line directions close to typical wake angles
+        # Only keep line directions close to typical wake angles
         if 25 < theta_deg < 65 or 115 < theta_deg < 155:
             a = np.cos(theta)
             b = np.sin(theta)
@@ -46,7 +46,7 @@ theta = np.linspace(0., 180., max(crop.shape), endpoint=False)
 sinogram = radon(crop, theta=theta)
 main_angle = theta[np.argmax(np.mean(sinogram, axis=0))]
 
-# === Step 7: Visualization ===
+# Visualization
 fig, axs = plt.subplots(2, 2, figsize=(12, 10))
 
 axs[0, 0].imshow(img_eq, cmap='gray')
